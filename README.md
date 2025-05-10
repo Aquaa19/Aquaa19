@@ -79,16 +79,15 @@
 
 ### 📂 Notable Projects
 
+- **📈 Numerical Integration Library:** Implemented in MATLAB and Python for various integration techniques.
+- **🔒 Cryptography Toolkit:** A collection of cryptographic algorithms built with Java and C++.
 - **📱 Cubic Equation Solver App:** Developed for Android using NDK and C for efficient computation.
-- **<0xF0><0x9F><0x93><0x84> Numerical Integration Library:** Implemented in MATLAB and Python for various integration techniques.
-- **<0xF0><0x9F><0x94><0x84> Cryptography Toolkit:** A collection of cryptographic algorithms built with Java and C++.
 - **📊 Python GUI Tools:** Interactive math visualizers created using Tkinter.
 - **💰 C# Finance Calculator:** A user-friendly GUI application built with WPF/WinForms.
 - **🕹️ Java GUI Nim Game:** Engaging single-player and multiplayer versions.
 - **❌⭕ Python Tic-Tac-Toe Game:** Feature-rich implementation with an AI opponent.
 - **🎮 3D Arcade Games:** Exploring game development with Space Shooter and Fruit Ninja-style prototypes.
 
----
 
 ### 🏆 Achievements
 
