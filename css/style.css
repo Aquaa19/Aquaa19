@@ -432,7 +432,10 @@
     min-height: 95vh;
     /* other styles */
 }
-
+#home .typed-text-output,
+#home .typed-cursor {
+    color: #FFFFFF;
+}
 #home #hero-text {
     background-image: url('../img/test_header.png'); /* Ensure this path is correct */
     background-size: cover;
