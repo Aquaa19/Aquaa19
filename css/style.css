@@ -428,42 +428,34 @@
     padding: 0;
 }
 
-/* Base styling for the row containing header content and image */
+/* Set a minimum height for the hero section and align columns */
 #home .row {
-    display: flex;
-    align-items: stretch; /* Crucial for making columns match height */
-    min-height: 90vh; /* Default minimum height for larger screens */
-    flex-wrap: wrap; /* Allow columns to wrap on smaller screens */
+    min-height: 95vh; /* Makes the header take up 95% of the viewport height */
 }
 
-/* Style for the text content column */
+/* Apply the blueprint background to the left (text) column */
 #home #hero-text {
-    background-image: url('../img/test_header.png'); /* Satellite image background */
+    background-image: url('../img/test_header.png'); /* Re-applies the blueprint image */
     background-size: cover;
     background-position: center;
-    display: flex; /* Use flex to vertically center text content */
-    flex-direction: column;
-    justify-content: center;
-    height: 100%; /* Ensure it fills the height provided by the parent row */
-    min-height: auto; /* Allow height to be determined by parent or content */
+    display: flex;
+    align-items: center; 
+    min-height: 95vh;
+}
+/* =================== Typed Text Color Fix =================== */
+
+#home .typed-text-output,
+#home .typed-cursor {
+    color: #FFFFFF;
 }
 
-/* Style for the profile image column */
-#hero-image-column {
-    height: 100%; /* Ensure it fills the height provided by the parent row */
-    min-height: auto; /* Allow height to be determined by parent or content */
-    display: flex; /* Use flex to center the image if needed */
-    justify-content: center;
-    align-items: center;
-    overflow: hidden; /* Hide any overflow if the image doesn't perfectly fit */
-}
-
-/* Style for the profile image itself */
-#profile-image {
+/* Style the profile image to cover its column perfectly */
+#home #profile-image {
     width: 100%;
-    height: 100%; /* Make image fill its parent column's height */
-    object-fit: cover; /* Crop and zoom the image to cover the area */
-    object-position: top center; /* Focus on the top part of the image (your head/ear) */
+    height: 100%;
+    min-height: 95vh; /* Match the row's min-height */
+    object-fit: cover; /* Fills the container, cropping as needed */
+    object-position: center;
 }
 
 /* Adjust heading color for dark background */
@@ -471,78 +463,51 @@
     color: #FFFFFF !important;
 }
 
-/* =================== Typed Text Color Fix =================== */
-#home .typed-text-output,
-#home .typed-cursor {
-    color: #FFFFFF;
-}
-
-/* Responsive adjustments */
-
-/* For devices larger than tablets (PC, large laptops) */
-@media (min-width: 992px) { /* This targets Bootstrap's 'lg' breakpoint and up */
-    #home .row {
-        flex-direction: row; /* Ensure columns are side-by-side */
-        min-height: 90vh; /* Maintain significant height for large screens */
-    }
-    #home #hero-text .p-5 {
-        padding: 3rem !important; /* Original large padding */
-    }
-    /* No specific min-height for #hero-text and #hero-image-column here; they stretch to row height */
-}
-
-/* For medium devices (tablets, some larger phones in landscape) */
-@media (min-width: 768px) and (max-width: 991.98px) { /* This targets Bootstrap's 'md' breakpoint */
-    #home .row {
-        flex-direction: row; /* Ensure columns are side-by-side */
-        min-height: 70vh; /* Adjusted height for tablets */
-    }
-    #home #hero-text .p-5 {
-        padding: 2.5rem !important; /* Reduced padding for tablets */
-    }
-    /* No specific min-height for #hero-text and #hero-image-column here; they stretch to row height */
-
-    #about .years .display-1 {
-        font-size: 8rem; /* Medium font for tablets */
-        line-height: 7rem;
-    }
-    #about .years h5 {
-        letter-spacing: 20px;
-        margin-right: -20px;
-    }
-}
-
-/* For small devices (mobile phones) */
-@media (max-width: 767.98px) { /* This targets Bootstrap's 'sm' and 'xs' breakpoints */
-    #home .row {
-        flex-direction: column; /* Force stacking on mobile */
-        min-height: auto; /* Allow content to dictate total height when stacked */
-        align-items: center; /* Center content horizontally in the stacked layout */
-    }
+/* On smaller screens, the text column will be full width */
+@media (max-width: 991.98px) {
     #home #hero-text {
-        min-height: 50vh; /* Adequate height for text section on mobile when stacked */
-        text-align: center !important; /* Center text on mobile */
+        min-height: 80vh; /* A slightly smaller height for mobile is often better */
     }
-    #hero-image-column {
-        min-height: 40vh; /* Adequate height for image section on mobile when stacked */
-        /* Flex properties to center the image if its content is smaller than its min-height */
-        display: flex;
-        justify-content: center;
-        align-items: center;
+}
+
+/* Proposed changes for better mobile responsiveness */
+
+/* Adjust min-height for very small screens (portrait phones) */
+@media (max-width: 575.98px) { 
+    #home .row,
+    #home #hero-text,
+    #home #profile-image {
+        min-height: 60vh; /* More reasonable height for small phones */
     }
-    #home #hero-text .p-5 {
-        padding: 1.5rem !important; /* Smallest padding for mobile */
+    #home #hero-text .p-5 { 
+        padding: 1.5rem !important; /* Smaller padding for tighter layout */
     }
-    /* Center the button group on mobile */
-    #home .d-flex.align-items-center.justify-content-center.justify-content-md-start.pt-5 {
-        justify-content: center !important; 
-    }
-    #about .years .display-1 {
-        font-size: 6rem;
+    #about .years .display-1 { /* Adjust font size for display-1 on very small screens */
+        font-size: 6rem; 
         line-height: 5rem;
     }
-    #about .years h5 {
-        letter-spacing: 15px;
+    #about .years h5 { /* Adjust letter spacing for h5 on very small screens */
+        letter-spacing: 15px; 
         margin-right: -15px;
+    }
+}
+
+/* Adjust for small to medium devices (landscape phones, tablets) */
+@media (min-width: 576px) and (max-width: 991.98px) { 
+    #home .row,
+    #home #hero-text,
+    #home #profile-image {
+        min-height: 75vh; /* More height for larger mobile devices/tablets */
+    }
+    #home #hero-text .p-5 { 
+        padding: 2.5rem !important; /* Adjusted padding */
+    }
+    #about .years .display-1 { /* Adjust font size for display-1 on medium screens */
+        font-size: 8rem; 
+        line-height: 7rem;
+    }
+    #about .years h5 { /* Adjust letter spacing for h5 on medium screens */
+        letter-spacing: 20px;
+        margin-right: -20px;
     }
 }
