@@ -464,45 +464,56 @@
     color: #FFFFFF !important;
 }
 
-/* Base styling for profile image (apply to the image element itself if possible) */
-#profile-image {
-    object-position: top center; /* Focus on the top of the image to avoid ear cut */
+/* Ensure the row is a flex container and items stretch to fill its height */
+#home .row {
+    display: flex;
+    align-items: stretch; /* Critical: Makes flex items (columns) stretch to the height of the tallest item */
+    min-height: 90vh; /* Default height for large screens */
 }
 
+/* Ensure columns fill the height of their parent row */
+#hero-text,
+#hero-image-column { /* Target both column divs */
+    height: 100%; /* Makes these columns fill the height provided by the parent row */
+    min-height: auto; /* Remove specific min-heights here to avoid conflict with row stretching */
+}
 
-/* Responsive adjustments for different screen sizes */
+/* Profile image styling */
+#profile-image { /* This targets the <img> element */
+    width: 100%;
+    height: 100%; /* Important: Make image fill its parent column's height */
+    object-fit: cover;
+    object-position: top center; /* Focus on the top part of the image */
+}
+
+/* Responsive adjustments */
 
 /* For devices larger than tablets (PC, large laptops) */
-@media (min-width: 992px) { /* Equivalent to col-lg-* and up */
+@media (min-width: 992px) {
     #home .row {
-        min-height: 90vh; /* Maintain significant height for large screens */
-        flex-direction: row; /* Ensure side-by-side */
+        min-height: 90vh;
     }
-    #home #hero-text {
-        min-height: 90vh; /* Match row height */
-    }
-    #hero-image-column { /* Target the new ID for the image column */
-        min-height: 90vh; /* Match row height */
+    #hero-text,
+    #hero-image-column {
+        min-height: auto; /* Controlled by row's min-height and height:100% */
     }
     #home #hero-text .p-5 {
-        padding: 3rem !important; /* Original large padding */
+        padding: 3rem !important;
     }
 }
 
 /* For medium devices (tablets, some larger phones in landscape) */
-@media (min-width: 768px) and (max-width: 991.98px) { /* Equivalent to col-md-* */
+@media (min-width: 768px) and (max-width: 991.98px) {
     #home .row {
-        min-height: 70vh; /* Adjusted height for tablets */
-        flex-direction: row; /* Side-by-side layout */
+        min-height: 70vh; /* Tablet-specific height */
+        align-items: stretch; /* Reconfirm stretching for side-by-side */
     }
-    #home #hero-text {
-        min-height: 70vh; /* Match row height */
-    }
-    #hero-image-column { /* Target the new ID for the image column */
-        min-height: 70vh; /* Match row height */
+    #hero-text,
+    #hero-image-column {
+        min-height: auto; /* Controlled by row's min-height and height:100% */
     }
     #home #hero-text .p-5 {
-        padding: 2.5rem !important; /* Reduced padding for tablets */
+        padding: 2.5rem !important;
     }
     #about .years .display-1 {
         font-size: 8rem; /* Medium font for tablets */
@@ -515,30 +526,40 @@
 }
 
 /* For small devices (mobile phones) */
-@media (max-width: 767.98px) { /* Equivalent to col-sm-* and xs-* */
+@media (max-width: 767.98px) {
     #home .row {
         min-height: auto; /* Allow content to dictate total height when stacked */
-        flex-direction: column; /* Force stacking on mobile */
+        flex-direction: column; /* Force stacking */
+        align-items: center; /* Center content horizontally in the stacked layout */
+    }
+    #hero-text,
+    #hero-image-column {
+        height: auto; /* Let content define height when stacked */
+        min-height: auto; /* No fixed min-height for stacked columns unless absolutely necessary */
     }
     #home #hero-text {
-        min-height: 50vh; /* Adequate height for text section on mobile */
-        text-align: center !important; /* Center text on mobile */
-    }
-    #hero-image-column { /* Target the new ID for the image column */
-        min-height: 40vh; /* Adequate height for image section on mobile */
-        display: flex; /* Use flex to center the image if it doesn't fill entirely */
+        min-height: 50vh; /* Text section minimum height for readability */
+        display: flex; /* Use flex to center content */
+        flex-direction: column;
         justify-content: center;
         align-items: center;
-        overflow: hidden; /* Prevent content overflow if image is too large */
+        text-align: center !important;
+    }
+    #hero-image-column {
+        min-height: 40vh; /* Image section minimum height */
+        display: flex; /* Center image content */
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
     }
     #home #hero-text .p-5 {
-        padding: 1.5rem !important; /* Smallest padding for mobile */
+        padding: 1.5rem !important;
     }
     #home .d-flex.align-items-center.justify-content-center.justify-content-md-start.pt-5 {
-        justify-content: center !important; /* Center buttons on mobile */
+        justify-content: center !important;
     }
     #about .years .display-1 {
-        font-size: 6rem; /* Smallest font for mobile */
+        font-size: 6rem;
         line-height: 5rem;
     }
     #about .years h5 {
