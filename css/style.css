@@ -97,7 +97,7 @@
 }
 
 @media (max-width: 991.98px) {
-    .navbar .navbar-nav .nav-link  {
+    .navbar .navbar-nav .nav-link {
         padding: 10px 0;
     }
 }
@@ -426,6 +426,7 @@
 #home {
     padding: 0;
 }
+
 /* Target the main header container */
 #home .row {
     min-height: 95vh;
@@ -433,6 +434,11 @@
 }
 
 #home #hero-text {
+    /* ADD THIS BACKGROUND IMAGE RULE */
+    background-image: url('../img/test_header.png'); /* Ensure this path is correct */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat; /* Add this to prevent tiling if image is small */
     /* ... existing styles ... */
     min-height: 95vh; /* This is for larger screens */
     display: flex; /* Ensure flex properties for content alignment */
