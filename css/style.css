@@ -424,48 +424,45 @@
 }
 
 /* Target the main header container */
-#home {
-    padding: 0;
-}
-
-/* Set a minimum height for the hero section and align columns */
 #home .row {
-    min-height: 95vh; /* Makes the header take up 95% of the viewport height */
-}
-
-/* Apply the blueprint background to the left (text) column */
-#home #hero-text {
-    background-image: url('../img/test_header.png'); /* Re-applies the blueprint image */
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    align-items: center; 
     min-height: 95vh;
-}
-/* =================== Typed Text Color Fix =================== */
-
-#home .typed-text-output,
-#home .typed-cursor {
-    color: #FFFFFF;
+    /* other styles */
 }
 
-/* Style the profile image to cover its column perfectly */
+#home #hero-text {
+    /* ... existing styles ... */
+    min-height: 95vh; /* This is for larger screens */
+    display: flex; /* Ensure flex properties for content alignment */
+    align-items: center; /* Vertically center content */
+}
+
 #home #profile-image {
+    /* ... existing styles ... */
+    min-height: 95vh; /* This is for larger screens */
     width: 100%;
     height: 100%;
-    min-height: 95vh; /* Match the row's min-height */
-    object-fit: cover; /* Fills the container, cropping as needed */
+    object-fit: cover;
     object-position: center;
 }
 
-/* Adjust heading color for dark background */
-#home #hero-text h1 {
-    color: #FFFFFF !important;
-}
-
-/* On smaller screens, the text column will be full width */
+/* Adjust for smaller screens (mobile, tablet up to 991.98px) */
 @media (max-width: 991.98px) {
+    #home .row {
+        /* Remove fixed min-height for the row on small screens */
+        min-height: auto;
+        /* Ensure columns stack properly, if flex causes issues in some browsers */
+        display: block;
+    }
+
     #home #hero-text {
-        min-height: 80vh; /* A slightly smaller height for mobile is often better */
+        /* Adjust height for mobile when stacked */
+        min-height: 50vh; /* Make it approximately half the viewport height */
+        /* You might want to center the content horizontally within this smaller height */
+        justify-content: center; /* Centers content if it's a flex container */
+    }
+
+    #home #profile-image {
+        /* Adjust height for mobile when stacked */
+        min-height: 50vh; /* Make it approximately half the viewport height */
     }
 }
