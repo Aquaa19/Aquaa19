@@ -469,3 +469,45 @@
         min-height: 80vh; /* A slightly smaller height for mobile is often better */
     }
 }
+
+/* Proposed changes for better mobile responsiveness */
+
+/* Adjust min-height for very small screens (portrait phones) */
+@media (max-width: 575.98px) { 
+    #home .row,
+    #home #hero-text,
+    #home #profile-image {
+        min-height: 60vh; /* More reasonable height for small phones */
+    }
+    #home #hero-text .p-5 { 
+        padding: 1.5rem !important; /* Smaller padding for tighter layout */
+    }
+    #about .years .display-1 { /* Adjust font size for display-1 on very small screens */
+        font-size: 6rem; 
+        line-height: 5rem;
+    }
+    #about .years h5 { /* Adjust letter spacing for h5 on very small screens */
+        letter-spacing: 15px; 
+        margin-right: -15px;
+    }
+}
+
+/* Adjust for small to medium devices (landscape phones, tablets) */
+@media (min-width: 576px) and (max-width: 991.98px) { 
+    #home .row,
+    #home #hero-text,
+    #home #profile-image {
+        min-height: 75vh; /* More height for larger mobile devices/tablets */
+    }
+    #home #hero-text .p-5 { 
+        padding: 2.5rem !important; /* Adjusted padding */
+    }
+    #about .years .display-1 { /* Adjust font size for display-1 on medium screens */
+        font-size: 8rem; 
+        line-height: 7rem;
+    }
+    #about .years h5 { /* Adjust letter spacing for h5 on medium screens */
+        letter-spacing: 20px;
+        margin-right: -20px;
+    }
+}
