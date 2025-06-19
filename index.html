@@ -1,397 +1,688 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arkadyuti Mandal - Portfolio</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Font Awesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <meta charset="utf-8">
+    <title>Arkadyuti Mandal - Personal Portfolio</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Arkadyuti Mandal's personal portfolio, showcasing skills in mobile app development, Python programming, and UI/UX design." name="keywords">
+    <meta content="A highly driven Computer Science undergraduate, dual-majoring in Mathematics, with a strong focus on mobile app development, Python programming, and intuitive UI/UX design." name="description">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"> 
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- Custom Royal Blue Color Overrides -->
     <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f3f4f6; /* Light gray background */
+        :root {
+            --primary: #41bee1; /* Royal Blue */
+            --secondary: #1E3A8A; /* Darker, richer blue */
+            --bs-primary: #41b6e1; /* Override Bootstrap primary for direct usage */
+            --bs-secondary: #1E3A8A; /* Override Bootstrap secondary for direct usage */
         }
-        /* Custom scrollbar for a modern look */
-        ::-webkit-scrollbar {
-            width: 8px;
+        /* Override Bootstrap color utility classes with !important for full effect */
+        .text-primary { color: var(--primary) !important; }
+        .bg-primary { background-color: var(--primary) !important; }
+        .border-primary { border-color: var(--primary) !important; }
+        .btn-primary {
+            background-color: var(--primary) !important;
+            border-color: var(--primary) !important;
         }
-        ::-webkit-scrollbar-track {
-            background: #e0e0e0;
-            border-radius: 10px;
+        .btn-outline-primary {
+            color: var(--primary) !important;
+            border-color: var(--primary) !important;
         }
-        ::-webkit-scrollbar-thumb {
-            background: #a1a1aa; /* Gray 400 */
-            border-radius: 10px;
+        .btn-outline-primary:hover {
+            background-color: var(--primary) !important;
+            border-color: var(--primary) !important;
         }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #71717a; /* Gray 600 */
+        .btn-square.btn-primary {
+             background-color: var(--primary) !important;
+             border-color: var(--primary) !important;
         }
 
-        /* Basic fade-in animation for sections */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        .text-secondary { color: var(--secondary) !important; }
+        .bg-secondary { background-color: var(--secondary) !important; }
+        .border-secondary { border-color: var(--secondary) !important; }
+        .btn-secondary {
+            background-color: var(--secondary) !important;
+            border-color: var(--secondary) !important;
         }
-        .fade-in.appear {
-            opacity: 1;
-            transform: translateY(0);
+        .btn-outline-secondary {
+            color: var(--secondary) !important;
+            border-color: var(--secondary) !important;
+        }
+        .btn-outline-secondary:hover {
+            background-color: var(--secondary) !important;
+            border-color: var(--secondary) !important;
+        }
+
+        /* Specific element overrides based on template structure */
+        .nav-link.active { 
+            color: var(--primary) !important;
+        }
+        .btn-play { 
+            background: var(--primary) !important;
+        }
+        .btn-play:before { /* Pulsing border for play button */
+            background: var(--primary) !important;
+        }
+        .btn-play span { /* Triangle in play button */
+            border-left-color: var(--primary) !important;
+        }
+        .progress-bar.bg-primary { /* Progress bar for primary skills */
+            background-color: var(--primary) !important;
+        }
+        .testimonial-icon i { /* Certifications icon color */
+            color: var(--primary) !important;
+        }
+        .owl-theme .owl-dots .owl-dot.active span, 
+        .owl-theme .owl-dots .owl-dot:hover span { /* Testimonial carousel dots */
+            background: var(--primary) !important;
+        }
+        #portfolio-flters li:hover, 
+        #portfolio-flters li.active { /* Project filter active/hover state */
+            color: var(--primary) !important;
+            border-color: var(--primary) !important;
+        }
+        .portfolio-btn { /* Project overlay background */
+            background: rgba(65, 105, 225, 0.9) !important; /* Using Royal Blue with 90% opacity */
         }
     </style>
 </head>
-<body class="text-gray-800">
 
-    <!-- Navigation Bar -->
-    <nav class="bg-gradient-to-r from-blue-600 to-purple-700 p-4 shadow-lg sticky top-0 z-50 rounded-b-lg">
-        <div class="container mx-auto flex flex-col md:flex-row justify-between items-center">
-            <a href="#hero" class="text-white text-3xl font-bold mb-3 md:mb-0 transform hover:scale-105 transition-transform duration-300">Arkadyuti Mandal</a>
-            <div class="flex flex-col md:flex-row space-y-3 md:space-y-0 md:space-x-8 text-lg">
-                <a href="#about" class="nav-link text-white hover:text-blue-200 transition-colors duration-300 transform hover:scale-105">About</a>
-                <a href="#skills" class="nav-link text-white hover:text-blue-200 transition-colors duration-300 transform hover:scale-105">Skills</a>
-                <a href="#projects" class="nav-link text-white hover:text-blue-200 transition-colors duration-300 transform hover:scale-105">Projects</a>
-                <a href="#education" class="nav-link text-white hover:text-blue-200 transition-colors duration-300 transform hover:scale-105">Education</a>
-                <a href="#contact" class="nav-link text-white hover:text-blue-200 transition-colors duration-300 transform hover:scale-105">Contact</a>
+<body data-bs-spy="scroll" data-bs-target=".navbar" data-bs-offset="51">
+    <!-- Spinner Start -->
+    <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+    <!-- Spinner End -->
+
+
+    <!-- Navbar Start -->
+    <nav class="navbar navbar-expand-lg bg-white navbar-light fixed-top shadow py-lg-0 px-4 px-lg-5 wow fadeIn" data-wow-delay="0.1s">
+        <a href="index.html" class="navbar-brand d-block d-lg-none">
+            <h1 class="text-primary fw-bold m-0">Arkadyuti</h1>
+        </a>
+        <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-between py-4 py-lg-0" id="navbarCollapse">
+            <div class="navbar-nav ms-auto py-0">
+                <a href="#home" class="nav-item nav-link active">Home</a>
+                <a href="#about" class="nav-item nav-link">About</a>
+                <a href="#skill" class="nav-item nav-link">Skills</a>
+                <a href="#service" class="nav-item nav-link">Services</a>
+            </div>
+            <a href="index.html" class="navbar-brand bg-secondary py-3 px-4 mx-3 d-none d-lg-block">
+                <h1 class="text-primary fw-bold m-0">Arkadyuti</h1>
+            </a>
+            <div class="navbar-nav me-auto py-0">
+                <a href="#project" class="nav-item nav-link">Projects</a>
+                <!-- <a href="#team" class="nav-item nav-link">Team</a> -->
+                <!-- Removed Certifications link as section is removed -->
+                <a href="#contact" class="nav-item nav-link">Contact</a>
             </div>
         </div>
     </nav>
+    <!-- Navbar End -->
 
-    <!-- Hero Section -->
-    <section id="hero" class="relative bg-gradient-to-br from-blue-500 to-purple-600 text-white py-20 md:py-32 flex items-center justify-center min-h-screen-75 overflow-hidden rounded-b-xl shadow-xl">
-        <!-- Background elements for visual interest -->
-        <div class="absolute inset-0 z-0 opacity-10">
-            <svg class="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice" fill="none">
-                <circle cx="20" cy="20" r="15" fill="currentColor" class="text-white opacity-20 animate-pulse"></circle>
-                <circle cx="80" cy="50" r="25" fill="currentColor" class="text-white opacity-15 animate-bounce"></circle>
-                <circle cx="40" cy="90" r="10" fill="currentColor" class="text-white opacity-25 animate-spin"></circle>
-            </svg>
-        </div>
-        <div class="container mx-auto px-6 text-center z-10 fade-in">
-            <img src="Pic_me.jpg" alt="Arkadyuti Mandal Profile" class="w-40 h-40 rounded-full mx-auto mb-6 border-4 border-white shadow-lg transform hover:scale-105 transition-transform duration-300">
-            <h1 class="text-5xl md:text-7xl font-extrabold leading-tight mb-4 animate-fade-in-up">Full Stack Developer & Math Enthusiast</h1>
-            <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto opacity-90 animate-fade-in-down">
-                Bridging the gap between complex mathematical theory and robust software solutions.
-            </p>
-            <div class="flex justify-center space-x-6">
-                <a href="https://github.com/Aquaa19/Aquaa19" target="_blank" class="text-white hover:text-blue-200 transition-colors duration-300 text-4xl transform hover:scale-110">
-                    <i class="fab fa-github"></i>
-                </a>
-                <a href="https://www.linkedin.com/in/arkadyuti-mandal-a47526193" target="_blank" class="text-white hover:text-blue-200 transition-colors duration-300 text-4xl transform hover:scale-110">
-                    <i class="fab fa-linkedin"></i>
-                </a>
-                <a href="mailto:arkamandal1919@gmail.com" class="text-white hover:text-blue-200 transition-colors duration-300 text-4xl transform hover:scale-110">
-                    <i class="fas fa-envelope"></i>
-                </a>
-            </div>
-            <a href="#contact" class="mt-10 inline-block bg-white text-blue-600 font-bold py-3 px-8 rounded-full shadow-lg hover:bg-blue-100 transition-all duration-300 transform hover:scale-105 hover:shadow-xl">
-                Let's Connect!
-            </a>
-        </div>
-    </section>
 
-    <!-- About Me Section -->
-    <section id="about" class="container mx-auto px-6 py-16 md:py-24 fade-in">
-        <h2 class="text-4xl font-bold text-center mb-12 text-blue-700">About Me</h2>
-        <div class="bg-white p-8 rounded-lg shadow-xl max-w-4xl mx-auto">
-            <p class="text-lg leading-relaxed mb-6">
-                I am a highly driven and analytically adept Full Stack Developer with a robust skill set spanning MERN stack technologies, Python, and advanced mathematical concepts. Currently in the second semester of my B.Sc. course in Mathematics and Computer Science, I am passionately committed to leveraging my strong problem-solving abilities, a deep understanding of algorithms, and data analysis expertise to address complex engineering and scientific challenges.
-            </p>
-            <p class="text-lg leading-relaxed mb-6">
-                My ambition is to contribute to cutting-edge technological advancements and governmental initiatives within the defense, space, or public sectors, particularly focusing on roles that demand interdisciplinary proficiency and a forward-thinking approach to innovation. My unique blend of mathematical rigor and computational skills allows me to approach problems with a holistic perspective, designing solutions that are both theoretically sound and practically efficient.
-            </p>
-            <p class="text-lg leading-relaxed">
-                I thrive on learning and tackling new challenges, constantly expanding my knowledge in areas like AI/ML, data science, and advanced algorithms to stay at the forefront of technology.
-            </p>
-        </div>
-    </section>
-
-    <!-- Skills Section -->
-    <section id="skills" class="bg-gray-100 py-16 md:py-24 fade-in">
-        <div class="container mx-auto px-6">
-            <h2 class="text-4xl font-bold text-center mb-12 text-blue-700">My Expertise</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-
-                <!-- Frontend Skills Card -->
-                <div class="bg-white p-6 rounded-lg shadow-xl border-t-4 border-blue-500 hover:shadow-2xl transition-shadow duration-300 transform hover:-translate-y-2">
-                    <h3 class="text-2xl font-semibold mb-4 text-gray-900 flex items-center"><i class="fas fa-desktop text-blue-500 mr-3"></i> Frontend</h3>
-                    <ul class="list-disc list-inside text-gray-700 space-y-2">
-                        <li>HTML5, CSS3, JavaScript (ES6+)</li>
-                        <li>React.js, Redux</li>
-                        <li>Responsive Web Design, Android App Development (UI/UX)</li>
-                        <li>Material-UI, Bootstrap</li>
-                    </ul>
-                </div>
-
-                <!-- Backend Skills Card -->
-                <div class="bg-white p-6 rounded-lg shadow-xl border-t-4 border-purple-500 hover:shadow-2xl transition-shadow duration-300 transform hover:-translate-y-2">
-                    <h3 class="text-2xl font-semibold mb-4 text-gray-900 flex items-center"><i class="fas fa-server text-purple-500 mr-3"></i> Backend</h3>
-                    <ul class="list-disc list-inside text-gray-700 space-y-2">
-                        <li>Node.js, Express.js</li>
-                        <li>MongoDB, Firebase</li>
-                        <li>RESTful APIs, JSON Web Tokens (JWT)</li>
-                    </ul>
-                </div>
-
-                <!-- Languages Skills Card -->
-                <div class="bg-white p-6 rounded-lg shadow-xl border-t-4 border-green-500 hover:shadow-2xl transition-shadow duration-300 transform hover:-translate-y-2">
-                    <h3 class="text-2xl font-semibold mb-4 text-gray-900 flex items-center"><i class="fas fa-code text-green-500 mr-3"></i> Languages</h3>
-                    <ul class="list-disc list-inside text-gray-700 space-y-2">
-                        <li>JavaScript, Python, C, C++</li>
-                        <li>Java, C#, XML, Kotlin, Swift</li>
-                        <li>R, MATLAB</li>
-                    </ul>
-                </div>
-
-                <!-- Data & Analytics Skills Card -->
-                <div class="bg-white p-6 rounded-lg shadow-xl border-t-4 border-red-500 hover:shadow-2xl transition-shadow duration-300 transform hover:-translate-y-2">
-                    <h3 class="text-2xl font-semibold mb-4 text-gray-900 flex items-center"><i class="fas fa-chart-line text-red-500 mr-3"></i> Data & Analytics</h3>
-                    <ul class="list-disc list-inside text-gray-700 space-y-2">
-                        <li>Python Data Analysis</li>
-                        <li>Array Operations, Matplotlib, Seaborn</li>
-                        <li>NumPy, Pandas</li>
-                    </ul>
-                </div>
-
-                <!-- Algorithms & Logic Skills Card -->
-                <div class="bg-white p-6 rounded-lg shadow-xl border-t-4 border-yellow-500 hover:shadow-2xl transition-shadow duration-300 transform hover:-translate-y-2">
-                    <h3 class="text-2xl font-semibold mb-4 text-gray-900 flex items-center"><i class="fas fa-brain text-yellow-500 mr-3"></i> Algorithms & Logic</h3>
-                    <ul class="list-disc list-inside text-gray-700 space-y-2">
-                        <li>Minimax Algorithm, Alpha-Beta Pruning</li>
-                        <li>Data Structures (Stacks, Queues, Trees, Graphs)</li>
-                        <li>Algorithm Design & Analysis</li>
-                    </ul>
-                </div>
-
-                <!-- Tools & Platforms Skills Card -->
-                <div class="bg-white p-6 rounded-lg shadow-xl border-t-4 border-indigo-500 hover:shadow-2xl transition-shadow duration-300 transform hover:-translate-y-2">
-                    <h3 class="text-2xl font-semibold mb-4 text-gray-900 flex items-center"><i class="fas fa-tools text-indigo-500 mr-3"></i> Tools & Platforms</h3>
-                    <ul class="list-disc list-inside text-gray-700 space-y-2">
-                        <li>Git, GitHub, VS Code, Postman</li>
-                        <li>Netlify, Vercel, Render</li>
-                        <li>Android Studio, PyCharm, Jupyter Notebook</li>
-                    </ul>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section id="projects" class="container mx-auto px-6 py-16 md:py-24 fade-in">
-        <h2 class="text-4xl font-bold text-center mb-12 text-blue-700">My Projects</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-
-            <!-- Project Card 1: ScholarSync -->
-            <div class="bg-white rounded-lg shadow-xl overflow-hidden transform hover:scale-105 transition-transform duration-300">
-                <img src="https://placehold.co/600x400/ececec/666666?text=ScholarSync" alt="ScholarSync Project" class="w-full h-48 object-cover">
-                <div class="p-6">
-                    <h3 class="text-2xl font-semibold mb-3 text-gray-900">ScholarSync (Android App)</h3>
-                    <p class="text-gray-700 mb-4">
-                        An academic management application designed to help students organize their studies efficiently.
-                    </p>
-                    <a href="#" target="_blank" class="text-blue-600 hover:underline font-medium">View Project <i class="fas fa-external-link-alt ml-1 text-sm"></i></a>
-                </div>
-            </div>
-
-            <!-- Project Card 2: Alphamath -->
-            <div class="bg-white rounded-lg shadow-xl overflow-hidden transform hover:scale-105 transition-transform duration-300">
-                <img src="https://placehold.co/600x400/ececec/666666?text=Alphamath" alt="Alphamath Project" class="w-full h-48 object-cover">
-                <div class="p-6">
-                    <h3 class="text-2xl font-semibold mb-3 text-gray-900">Alphamath</h3>
-                    <p class="text-gray-700 mb-4">
-                        Integrates mathematical concepts with software development to enhance problem-solving efficiency.
-                    </p>
-                    <a href="#" target="_blank" class="text-blue-600 hover:underline font-medium">View Project <i class="fas fa-external-link-alt ml-1 text-sm"></i></a>
-                </div>
-            </div>
-
-            <!-- Project Card 3: AI Tic-Tac-Toe Game -->
-            <div class="bg-white rounded-lg shadow-xl overflow-hidden transform hover:scale-105 transition-transform duration-300">
-                <img src="https://placehold.co/600x400/ececec/666666?text=AI+Tic-Tac-Toe" alt="AI Tic-Tac-Toe Project" class="w-full h-48 object-cover">
-                <div class="p-6">
-                    <h3 class="text-2xl font-semibold mb-3 text-gray-900">AI Tic-Tac-Toe Game</h3>
-                    <p class="text-gray-700 mb-4">
-                        Demonstrates proficiency in implementing Minimax and Alpha-Beta Pruning algorithms.
-                    </p>
-                    <a href="#" target="_blank" class="text-blue-600 hover:underline font-medium">View Project <i class="fas fa-external-link-alt ml-1 text-sm"></i></a>
-                </div>
-            </div>
-
-            <!-- Project Card 4: E-Commerce Web App -->
-            <div class="bg-white rounded-lg shadow-xl overflow-hidden transform hover:scale-105 transition-transform duration-300">
-                <img src="https://placehold.co/600x400/ececec/666666?text=E-Commerce+App" alt="E-Commerce Web App Project" class="w-full h-48 object-cover">
-                <div class="p-6">
-                    <h3 class="text-2xl font-semibold mb-3 text-gray-900">E-Commerce Web App (Mini Amazon Clone)</h3>
-                    <p class="text-gray-700 mb-4">
-                        Full MERN stack project with user authentication, secure payments (Stripe API), and Redux.
-                    </p>
-                    <a href="#" target="_blank" class="text-blue-600 hover:underline font-medium">View Project <i class="fas fa-external-link-alt ml-1 text-sm"></i></a>
-                </div>
-            </div>
-
-            <!-- Project Card 5: Matrix Calculator -->
-            <div class="bg-white rounded-lg shadow-xl overflow-hidden transform hover:scale-105 transition-transform duration-300">
-                <img src="https://placehold.co/600x400/ececec/666666?text=Matrix+Calculator" alt="Matrix Calculator Project" class="w-full h-48 object-cover">
-                <div class="p-6">
-                    <h3 class="text-2xl font-semibold mb-3 text-gray-900">Matrix Calculator</h3>
-                    <p class="text-gray-700 mb-4">
-                        Showcases strong computational logic and programmatic handling of complex mathematical operations.
-                    </p>
-                    <a href="#" target="_blank" class="text-blue-600 hover:underline font-medium">View Project <i class="fas fa-external-link-alt ml-1 text-sm"></i></a>
-                </div>
-            </div>
-
-            <!-- Project Card 6: Professional Portfolio Website (This one!) -->
-            <div class="bg-white rounded-lg shadow-xl overflow-hidden transform hover:scale-105 transition-transform duration-300">
-                <img src="https://placehold.co/600x400/ececec/666666?text=My+Portfolio" alt="Portfolio Website Project" class="w-full h-48 object-cover">
-                <div class="p-6">
-                    <h3 class="text-2xl font-semibold mb-3 text-gray-900">Professional Portfolio Website</h3>
-                    <p class="text-gray-700 mb-4">
-                        Crafted with HTML5, CSS3, JavaScript, and GSAP animations, achieving high Lighthouse scores.
-                    </p>
-                    <a href="#" target="_blank" class="text-blue-600 hover:underline font-medium">View Project <i class="fas fa-external-link-alt ml-1 text-sm"></i></a>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- Education & Certifications Section -->
-    <section id="education" class="bg-gray-100 py-16 md:py-24 fade-in">
-        <div class="container mx-auto px-6">
-            <h2 class="text-4xl font-bold text-center mb-12 text-blue-700">Education & Certifications</h2>
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
-
-                <!-- Education Card -->
-                <div class="bg-white p-6 rounded-lg shadow-xl border-t-4 border-indigo-600 hover:shadow-2xl transition-shadow duration-300">
-                    <h3 class="text-2xl font-semibold mb-4 text-gray-900 flex items-center"><i class="fas fa-graduation-cap text-indigo-600 mr-3"></i> Education</h3>
-                    <div class="mb-4">
-                        <p class="text-xl font-medium text-gray-800">Bachelor of Science in Mathematics and Computer Science (MDC)</p>
-                        <p class="text-gray-600">Bagnan College, University of Calcutta, Bagnan, India</p>
-                        <p class="text-gray-600 text-sm">Expected Graduation: 2027 (Currently in 2nd Semester)</p>
+    <div class="container-fluid" id="home">
+    <div class="row g-0 align-items-center">
+        <div class="col-lg-7" id="hero-text"> <div class="p-5 text-center text-lg-start">
+                    <h3 class="text-primary mb-3 wow fadeInDown" data-wow-delay="0.1s">I'm</h3>
+                    <h1 class="display-3 text-white mb-3 wow fadeInDown" data-wow-delay="0.3s">Arkadyuti Mandal</h1>
+                    <h2 class="typed-text-output d-inline wow fadeInDown" data-wow-delay="0.5s"></h2>
+                    <div class="typed-text d-none">Mobile App Developer, Python Programmer, UI/UX Designer, Game Developer</div>
+                    <div class="d-flex align-items-center justify-content-center justify-content-lg-start pt-5 wow fadeInUp" data-wow-delay="0.7s">
+                        <a href="Arkadyuti_Mandal_resume.docx" class="btn btn-primary py-3 px-4 me-5" download>Download CV</a>
                     </div>
-                    <h4 class="text-lg font-semibold text-gray-800 mb-2">Relevant Coursework:</h4>
-                    <ul class="list-disc list-inside text-gray-700 space-y-1">
-                        <li>Data Structures and Algorithms</li>
-                        <li>Object-Oriented Programming, Database Management Systems</li>
-                        <li>Web Development (HTML5, CSS3, JavaScript, React.js, Node.js, Express.js, MongoDB)</li>
-                        <li>Python Programming, Discrete Mathematics, Linear Algebra</li>
-                        <li>Java, C#, XML, Kotlin, Swift, C++, Matrix Operations</li>
+                </div>
+        </div>
+        <div class="col-lg-5 d-none d-lg-block wow fadeIn" data-wow-delay="0.9s"> <img class="img-fluid" id="profile-image" src="img/arkadyuti_profile.jpg" alt="Profile Picture">
+        </div>
+    </div>
+</div>
+
+
+    <!-- Video Modal Start -->
+    <!-- Removed Video Modal as it was not relevant to resume content -->
+
+
+    <!-- About Start -->
+    <div class="container-xxl py-6" id="about">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="d-flex align-items-center mb-5">
+                        <div class="years flex-shrink-0 text-center me-4">
+                            <h1 class="display-1 mb-0">1.5+</h1>
+                            <h5 class="mb-0">Years</h5>
+                        </div>
+                        <h3 class="lh-base mb-0">of working experience in software development & app design</h3>
+                    </div>
+                    <p class="mb-4">A highly driven Computer Science undergraduate, dual-majoring in Mathematics, currently in Semester 2, with a strong focus on mobile app development, Python programming, and intuitive UI/UX design. Possessing a proven ability to architect and build secure, efficient, and scalable software solutions. Dedicated to leveraging advanced mathematical concepts and robust coding practices for impactful roles in public sector R&D, space, and defense organizations such as DRDO and ISRO. Actively pursuing freelance opportunities in software and app development, and passionate about creating engaging game experiences, with a current focus on learning Firebase integrations for scalable backend solutions.</p>
+                    <p class="mb-3"><i class="far fa-check-circle text-primary me-3"></i>Proven ability to architect and build secure, efficient, and scalable software solutions.</p>
+                    <p class="mb-3"><i class="far fa-check-circle text-primary me-3"></i>Dedicated to leveraging advanced mathematical concepts and robust coding practices.</p>
+                    <p class="mb-3"><i class="far fa-check-circle text-primary me-3"></i>Passionate about creating engaging game experiences.</p>
+                    <a class="btn btn-primary py-3 px-5 mt-3" href="#contact">Contact Me</a>
+                </div>
+                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="row g-3 mb-4">
+                        <div class="col-sm-6">
+                            <img class="img-fluid rounded" src="img/about_image_1.jpg" alt="About Image 1">
+                        </div>
+                        <div class="col-sm-6">
+                            <img class="img-fluid rounded" src="img/about_image_2.jpg" alt="About Image 2">
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-center mb-3">
+                        <h5 class="border-end pe-3 me-3 mb-0">Projects Completed</h5>
+                        <h2 class="text-primary fw-bold mb-0" data-toggle="counter-up">6</h2>
+                    </div>
+                    <p class="mb-0">My projects demonstrate a commitment to integrating complex academic algorithms into practical, user-centric software solutions.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- About End -->
+
+
+    <!-- Expertise Start -->
+    <div class="container-xxl py-6 pb-5" id="skill">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <h1 class="display-5 mb-5">Skills & Experience</h1>
+                    <p class="mb-4">My expertise spans a wide range of computer science and mathematics domains, enabling me to build robust and intelligent software solutions.</p>
+                    <h3 class="mb-4">My Skills</h3>
+                    <div class="row align-items-center">
+                        <div class="col-md-6">
+                            <div class="skill mb-4">
+                                <div class="d-flex justify-content-between">
+                                    <h6 class="font-weight-bold">App Development (Jetpack Compose, Android Studio)</h6>
+                                    <h6 class="font-weight-bold">90%</h6>
+                                </div>
+                                <div class="progress">
+                                    <div class="progress-bar bg-primary" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </div>
+                            <div class="skill mb-4">
+                                <div class="d-flex justify-content-between">
+                                    <h6 class="font-weight-bold">Programming Languages (Python, Java, Kotlin, C++)</h6>
+                                    <h6 class="font-weight-bold">85%</h6>
+                                </div>
+                                <div class="progress">
+                                    <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </div>
+                            <div class="skill mb-4">
+                                <div class="d-flex justify-content-between">
+                                    <h6 class="font-weight-bold">Databases (Kotlin Room, SQL Local Database)</h6>
+                                    <h6 class="font-weight-bold">80%</h6>
+                                </div>
+                                <div class="progress">
+                                    <div class="progress-bar bg-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="skill mb-4">
+                                <div class="d-flex justify-content-between">
+                                    <h6 class="font-weight-bold">Software Design & UI/UX</h6>
+                                    <h6 class="font-weight-bold">95%</h6>
+                                </div>
+                                <div class="progress">
+                                    <div class="progress-bar bg-info" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </div>
+                            <div class="skill mb-4">
+                                <div class="d-flex justify-content-between">
+                                    <h6 class="font-weight-bold">Data & Analytics (NumPy, Pandas, Matplotlib)</h6>
+                                    <h6 class="font-weight-bold">75%</h6>
+                                </div>
+                                <div class="progress">
+                                    <div class="progress-bar bg-dark" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </div>
+                            <div class="skill mb-4">
+                                <div class="d-flex justify-content-between">
+                                    <h6 class="font-weight-bold">Game Development (AI Algorithms)</h6>
+                                    <h6 class="font-weight-bold">80%</h6>
+                                </div>
+                                <div class="progress">
+                                    <div class="progress-bar bg-success" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <h3 class="mb-4 mt-5">Currently Learning</h3>
+                    <div class="row align-items-center">
+                        <div class="col-md-12">
+                            <div class="skill mb-4">
+                                <div class="d-flex justify-content-between">
+                                    <h6 class="font-weight-bold">Firebase Integrations, MongoDB, RESTful APIs</h6>
+                                    <h6 class="font-weight-bold">Ongoing</h6>
+                                </div>
+                                <div class="progress">
+                                    <div class="progress-bar bg-primary" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
+                    <ul class="nav nav-pills rounded border border-2 border-primary mb-5">
+                        <li class="nav-item w-50">
+                            <button class="nav-link w-100 py-3 fs-5 active" data-bs-toggle="pill" href="#tab-1">Experience</button>
+                        </li>
+                        <li class="nav-item w-50">
+                            <button class="nav-link w-100 py-3 fs-5" data-bs-toggle="pill" href="#tab-2">Education</button>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div id="tab-1" class="tab-pane fade show p-0 active">
+                            <div class="row gy-5 gx-4">
+                                <div class="col-sm-12">
+                                    <h5>Software Developer / Freelance Projects</h5>
+                                    <hr class="text-primary my-2">
+                                    <p class="text-primary mb-1">Jan 2024 - Present</p>
+                                    <h6 class="mb-0">Self-Driven / Remote</h6>
+                                    <ul>
+                                        <li>Developed comprehensive mobile applications and standalone software tools.</li>
+                                        <li>Emphasized robust local data storage and user-centric UI/UX design throughout the development lifecycle.</li>
+                                        <li>Executed complete software development lifecycle, including secure authentication mechanisms, and the creation of modular, component-based user interfaces.</li>
+                                        <li>Delivered efficient and reliable software solutions for diverse client needs, with ongoing learning in cloud synchronization techniques.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="tab-2" class="tab-pane fade show p-0">
+                            <div class="row gy-5 gx-4">
+                                <div class="col-sm-12">
+                                    <h5>B.Sc. in Mathematics and Computer Science</h5>
+                                    <hr class="text-primary my-2">
+                                    <p class="text-primary mb-1">Expected Graduation: 2027</p>
+                                    <h6 class="mb-0">Bagnan College, University of Calcutta</h6>
+                                    <ul>
+                                        <li>Currently in Semester 2.</li>
+                                        <li>Relevant Coursework: Data Structures & Algorithms (DSA), Object-Oriented Programming (OOP), Database Management Systems (DBMS), Python, Java, Discrete Mathematics, Linear Algebra.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Expertise End -->
+
+
+    <!-- Service Start -->
+    <div class="container-fluid bg-light my-5 py-6" id="service">
+        <div class="container">
+            <div class="row g-5 mb-5 wow fadeInUp" data-wow-delay="0.1s">
+                <div class="col-lg-6">
+                    <h1 class="display-5 mb-0">My Services</h1>
+                </div>
+                <div class="col-lg-6 text-lg-end">
+                    <a class="btn btn-primary py-3 px-5" href="#contact">Hire Me</a>
+                </div>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="service-item d-flex flex-column flex-sm-row bg-white rounded h-100 p-4 p-lg-5">
+                        <div class="bg-icon flex-shrink-0 mb-3">
+                            <i class="fa fa-mobile-alt fa-2x text-dark"></i>
+                        </div>
+                        <div class="ms-sm-4">
+                            <h4 class="mb-3">Mobile App Development</h4>
+                            <h6 class="mb-3">Android & Cross-Platform Solutions</h6>
+                            <span>Crafting intuitive and high-performance mobile applications using modern frameworks like Jetpack Compose and integrating robust backend services.</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="service-item d-flex flex-column flex-sm-row bg-white rounded h-100 p-4 p-lg-5">
+                        <div class="bg-icon flex-shrink-0 mb-3">
+                            <i class="fa fa-code fa-2x text-dark"></i>
+                        </div>
+                        <div class="ms-sm-4">
+                            <h4 class="mb-3">Python Programming</h4>
+                            <h6 class="mb-3">Backend, Data Analysis & Automation</h6>
+                            <span>Developing efficient Python-based solutions for complex mathematical computations, data processing, and automation scripts.</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="service-item d-flex flex-column flex-sm-row bg-white rounded h-100 p-4 p-lg-5">
+                        <div class="bg-icon flex-shrink-0 mb-3">
+                            <i class="fa fa-palette fa-2x text-dark"></i>
+                        </div>
+                        <div class="ms-sm-4">
+                            <h4 class="mb-3">UI/UX Design</h4>
+                            <h6 class="mb-3">User-Centric Interface Solutions</h6>
+                            <span>Designing visually appealing and highly intuitive user interfaces that enhance user experience and engagement.</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="service-item d-flex flex-column flex-sm-row bg-white rounded h-100 p-4 p-lg-5">
+                        <div class="bg-icon flex-shrink-0 mb-3">
+                            <i class="fa fa-gamepad fa-2x text-dark"></i>
+                        </div>
+                        <div class="ms-sm-4">
+                            <h4 class="mb-3">Game Development</h4>
+                            <h6 class="mb-3">AI & Game Logic Implementation</h6>
+                            <span>Implementing intelligent game opponents and complex game logic to create engaging and challenging interactive experiences.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Service End -->
+
+
+    <!-- Projects Start -->
+    <div class="container-xxl py-6 pt-5" id="project">
+        <div class="container">
+            <div class="row g-5 mb-5 align-items-center wow fadeInUp" data-wow-delay="0.1s">
+                <div class="col-lg-6">
+                    <h1 class="display-5 mb-0">My Projects</h1>
+                </div>
+                <div class="col-lg-6 text-lg-end">
+                    <ul class="list-inline mx-n3 mb-0" id="portfolio-flters">
+                        <li class="mx-3 active" data-filter="*">All Projects</li>
+                        <li class="mx-3" data-filter=".app-dev">App Development</li>
+                        <li class="mx-3" data-filter=".math-eng">Mathematical Engines</li>
+                        <li class="mx-3" data-filter=".game-dev">Game Development</li>
                     </ul>
                 </div>
-
-                <!-- Certifications Card -->
-                <div class="bg-white p-6 rounded-lg shadow-xl border-t-4 border-teal-600 hover:shadow-2xl transition-shadow duration-300">
-                    <h3 class="text-2xl font-semibold mb-4 text-gray-900 flex items-center"><i class="fas fa-certificate text-teal-600 mr-3"></i> Certifications</h3>
-                    <ul class="list-disc list-inside text-gray-700 space-y-3">
-                        <li>
-                            <p class="font-medium text-gray-800">Meta Full Stack Developer</p>
-                            <p class="text-gray-600 text-sm">Coursera (June 2024)</p>
-                        </li>
-                        <li>
-                            <p class="font-medium text-gray-800">Responsive Web Design</p>
-                            <p class="text-gray-600 text-sm">freeCodeCamp (March 2024)</p>
-                        </li>
-                        <li>
-                            <p class="font-medium text-gray-800">Data Structures and Algorithms Specialization</p>
-                            <p class="text-gray-600 text-sm">Coursera</p>
-                        </li>
-                        <li>
-                            <p class="font-medium text-gray-800">Machine Learning/Deep Learning Fundamentals (In Progress)</p>
-                            <p class="text-gray-600 text-sm">Coursera/edX</p>
-                        </li>
-                        <li>
-                            <p class="font-medium text-gray-800">Python for Data Science and AI</p>
-                            <p class="text-gray-600 text-sm">IBM/Coursera</p>
-                        </li>
-                    </ul>
+            </div>
+            <div class="row g-4 portfolio-container wow fadeInUp" data-wow-delay="0.1s">
+                <div class="col-lg-4 col-md-6 portfolio-item app-dev">
+                    <div class="portfolio-img rounded overflow-hidden">
+                        <img class="img-fluid" src="img/scholarsync.png" alt="ScholarSync">
+                        <div class="portfolio-btn">
+                            <a class="btn btn-lg-square btn-outline-secondary border-2 mx-1" href="img/scholarsync.png" data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
+                            <!-- Removed GitHub link for ongoing project -->
+                        </div>
+                    </div>
+                    <div class="mt-3 text-center">
+                        <h5>ScholarSync - Android Academic Manager (Ongoing Project)</h5>
+                        <p>Comprehensive student data management application built with Jetpack Compose, Java, and Kotlin, emphasizing local data storage and future cloud integration.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 portfolio-item math-eng">
+                    <div class="portfolio-img rounded overflow-hidden">
+                        <img class="img-fluid" src="img/alphamath.png" alt="Alphamath">
+                        <div class="portfolio-btn">
+                            <a class="btn btn-lg-square btn-outline-secondary border-2 mx-1" href="img/alphamath.png" data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
+                            <a class="btn btn-lg-square btn-outline-secondary border-2 mx-1" href="https://github.com/Aquaa19/AlphaMath_Aquaa" target="_blank"><i class="fa fa-link"></i></a>
+                        </div>
+                    </div>
+                   <div class="mt-3 text-center">
+                        <h5>Alphamath - Mathematical Engine (Python)</h5>
+                        <p>Sophisticated Python-based software for algebraic problems, symbolic logic, and matrix operations.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 portfolio-item app-dev">
+                    <div class="portfolio-img rounded overflow-hidden">
+                        <img class="img-fluid" src="img/markly.png" alt="Markly">
+                        <div class="portfolio-btn">
+                            <a class="btn btn-lg-square btn-outline-secondary border-2 mx-1" href="img/markly.png" data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
+                            <a class="btn btn-lg-square btn-outline-secondary border-2 mx-1" href="https://github.com/Aquaa19/Markly" target="_blank"><i class="fa fa-link"></i></a>
+                        </div>
+                    </div>
+                   <div class="mt-3 text-center">
+                        <h5>Markly - Attendance App with Analytics (Java)</h5>
+                        <p>Attendance tracking application utilizing Java, Room entity, and DAO for robust data management and plotting, with a focus on local database solutions.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 portfolio-item app-dev">
+                    <div class="portfolio-img rounded overflow-hidden">
+                        <img class="img-fluid" src="img/edupay.png" alt="EduPay">
+                        <div class="portfolio-btn">
+                            <a class="btn btn-lg-square btn-outline-secondary border-2 mx-1" href="img/edupay.png" data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
+                            <a class="btn btn-lg-square btn-outline-secondary border-2 mx-1" href="https://github.com/Aquaa19/EduPay" target="_blank"><i class="fa fa-link"></i></a>
+                        </div>
+                    </div>
+                   <div class="mt-3 text-center">
+                        <h5>EduPay - Semester-Wise Fee Tracker (Android)</h5>
+                        <p>Developed in Jetpack Compose, leveraging Room DB for robust offline support in fee tracking.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 portfolio-item app-dev math-eng">
+                    <div class="portfolio-img rounded overflow-hidden">
+                        <img class="img-fluid" src="img/matrix_calculator.png" alt="Matrix Calculator">
+                        <div class="portfolio-btn">
+                            <a class="btn btn-lg-square btn-outline-secondary border-2 mx-1" href="img/matrix_calculator.png" data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
+                            <a class="btn btn-lg-square btn-outline-secondary border-2 mx-1" href="https://github.com/Aquaa19/Matrix" target="_blank"><i class="fa fa-link"></i></a>
+                        </div>
+                    </div>
+                   <div class="mt-3 text-center">
+                        <h5>Matrix Calculator - Algebra App (Android - Kotlin)</h5>
+                        <p>Android application automating complex matrix operations with a meticulously designed UI, purely developed in Kotlin and Jetpack Compose.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 portfolio-item game-dev">
+                    <div class="portfolio-img rounded overflow-hidden">
+                        <img class="img-fluid" src="img/ai_tictactoe.png" alt="AI Tic-Tac-Toe">
+                        <div class="portfolio-btn">
+                            <a class="btn btn-lg-square btn-outline-secondary border-2 mx-1" href="img/ai_tictactoe.png" data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
+                            <a class="btn btn-lg-square btn-outline-secondary border-2 mx-1" href="https://github.com/Aquaa19/AI-Tic-Tac-Toe" target="_blank"><i class="fa fa-link"></i></a>
+                        </div>
+                    </div>
+                   <div class="mt-3 text-center">
+                        <h5>AI Tic-Tac-Toe - Game Development Project</h5>
+                        <p>Implemented an intelligent game opponent using advanced AI algorithms: Minimax and Alpha-Beta pruning.</p>
+                    </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+    <!-- Projects End -->
 
-    <!-- Contact Section -->
-    <section id="contact" class="container mx-auto px-6 py-16 md:py-24 fade-in">
-        <h2 class="text-4xl font-bold text-center mb-12 text-blue-700">Get in Touch</h2>
-        <div class="bg-white p-8 rounded-lg shadow-xl max-w-2xl mx-auto text-center">
-            <p class="text-lg text-gray-700 mb-6">
-                I'm always open to new opportunities and collaborations. Feel free to reach out!
-            </p>
-            <div class="flex flex-col space-y-4 mb-8">
-                <p class="text-xl text-gray-800 flex items-center justify-center">
-                    <i class="fas fa-phone-alt text-blue-500 mr-3"></i> +91 8100516695
-                </p>
-                <p class="text-xl text-gray-800 flex items-center justify-center">
-                    <i class="fas fa-envelope text-blue-500 mr-3"></i> <a href="mailto:arkamandal1919@gmail.com" class="hover:underline">arkamandal1919@gmail.com</a>
-                </p>
-                <p class="text-xl text-gray-800 flex items-center justify-center">
-                    <i class="fas fa-link text-blue-500 mr-3"></i> <a href="https://your-portfolio-link.com" target="_blank" class="hover:underline">My Portfolio</a>
-                </p>
+
+    <!-- Team Start -->
+    <!-- Removed Team Section as it is not relevant for a personal portfolio -->
+
+
+    <!-- Testimonial Start -->
+    <!-- Removed Testimonial section as certifications were removed -->
+    <!-- <div class="container-fluid bg-light py-5 my-5" id="testimonial">
+        <div class="container-fluid py-5">
+            <h1 class="display-5 text-center mb-5 wow fadeInUp" data-wow-delay="0.1s">Certifications</h1>
+            <div class="row justify-content-center">
+                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="owl-carousel testimonial-carousel">
+                        <div class="testimonial-item text-center">
+                            <div class="position-relative mb-5">
+                                <img class="img-fluid rounded-circle border border-secondary p-2 mx-auto" src="img/dsa_cert.png" alt="DSA Certification">
+                                <div class="testimonial-icon">
+                                    <i class="fa fa-award text-primary"></i>
+                                </div>
+                            </div>
+                            <p class="fs-5 fst-italic">This specialization provided a strong foundation in designing and analyzing efficient algorithms and data structures.</p>
+                            <hr class="w-25 mx-auto">
+                            <h5>Data Structures & Algorithms (DSA)</h5>
+                            <span>Coursera</span>
+                        </div>
+                        <div class="testimonial-item text-center">
+                            <div class="position-relative mb-5">
+                                <img class="img-fluid rounded-circle border border-secondary p-2 mx-auto" src="img/ml_cert.png" alt="ML Certification">
+                                <div class="testimonial-icon">
+                                    <i class="fa fa-award text-primary"></i>
+                                </div>
+                            </div>
+                            <p class="fs-5 fst-italic">Covered essential machine learning concepts, algorithms, and practical applications.</p>
+                            <hr class="w-25 mx-auto">
+                            <h5>Machine Learning Fundamentals</h5>
+                            <span>edX/Coursera</span>
+                        </div>
+                        <div class="testimonial-item text-center">
+                            <div class="position-relative mb-5">
+                                <img class="img-fluid rounded-circle border border-secondary p-2 mx-auto" src="img/python_cert.png" alt="Python Certification">
+                                <div class="testimonial-icon">
+                                    <i class="fa fa-award text-primary"></i>
+                                </div>
+                            </div>
+                            <p class="fs-5 fst-italic">Equipped with skills in Python for data manipulation, analysis, and AI development.</p>
+                            <hr class="w-25 mx-auto">
+                            <h5>Python for Data Science and AI</h5>
+                            <span>IBM/Coursera</span>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <!-- Optional: Simple contact form if desired, can be added here -->
-            <!-- <form class="space-y-4">
-                <input type="text" placeholder="Your Name" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
-                <input type="email" placeholder="Your Email" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
-                <textarea placeholder="Your Message" rows="5" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
-                <button type="submit" class="w-full bg-blue-600 text-white py-3 rounded-lg font-bold hover:bg-blue-700 transition-colors duration-300 transform hover:scale-105">Send Message</button>
-            </form> -->
         </div>
-    </section>
+    </div> -->
+    <!-- Testimonial End -->
 
-    <!-- Footer -->
-    <footer class="bg-gray-800 text-white p-6 text-center rounded-t-lg shadow-inner">
-        <div class="container mx-auto text-lg">
-            <p>&copy; 2025 Arkadyuti Mandal. All rights reserved.</p>
-            <div class="flex justify-center space-x-6 mt-4">
-                <a href="https://github.com/your-github" target="_blank" class="text-gray-300 hover:text-white transition-colors duration-300 text-2xl transform hover:scale-110">
-                    <i class="fab fa-github"></i>
-                </a>
-                <a href="https://linkedin.com/in/your-linkedin" target="_blank" class="text-gray-300 hover:text-white transition-colors duration-300 text-2xl transform hover:scale-110">
-                    <i class="fab fa-linkedin"></i>
-                </a>
-                <a href="mailto:arkamandal1919@gmail.com" class="text-gray-300 hover:text-white transition-colors duration-300 text-2xl transform hover:scale-110">
-                    <i class="fas fa-envelope"></i>
-                </a>
+
+    <!-- Contact Start -->
+    <div class="container-xxl pb-5" id="contact">
+        <div class="container py-5">
+            <div class="row g-5 mb-5 wow fadeInUp" data-wow-delay="0.1s">
+                <div class="col-lg-6">
+                    <h1 class="display-5 mb-0">Let's Work Together</h1>
+                </div>
+                <div class="col-lg-6 text-lg-end">
+                    <a class="btn btn-primary py-3 px-5" href="mailto:arkamandal1919@gmail.com">Say Hello</a>
+                </div>
+            </div>
+            <div class="row g-5">
+                <div class="col-lg-5 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <p class="mb-2">My Location:</p>
+                    <h3 class="fw-bold">Bagnan, West Bengal, India</h3>
+                    <hr class="w-100">
+                    <p class="mb-2">Call me:</p>
+                    <h3 class="fw-bold">+91 8100516695</h3>
+                    <hr class="w-100">
+                    <p class="mb-2">Mail me:</p>
+                    <h3 class="fw-bold">arkamandal1919@gmail.com</h3>
+                    <hr class="w-100">
+                    <p class="mb-2">Connect with me:</p>
+                    <div class="d-flex pt-2">
+                        <a class="btn btn-square btn-primary me-2" href="https://www.linkedin.com/in/arkadyuti-mandal-a47526193/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                        <a class="btn btn-square btn-primary me-2" href="https://github.com/Aquaa19/Aquaa19" target="_blank"><i class="fab fa-github"></i></a>
+                        <a class="btn btn-square btn-primary me-2" href="https://aquaa19.github.io/Aquaa19/" target="_blank"><i class="fa fa-globe"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-7 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                    <p class="mb-4">Feel free to reach out for collaborations, project discussions, or any inquiries. I am always open to new opportunities.</p>
+                    <form>
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" id="name" placeholder="Your Name">
+                                    <label for="name">Your Name</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input type="email" class="form-control" id="email" placeholder="Your Email">
+                                    <label for="email">Your Email</label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" id="subject" placeholder="Subject">
+                                    <label for="subject">Subject</label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-floating">
+                                    <textarea class="form-control" placeholder="Leave a message here" id="message" style="height: 100px"></textarea>
+                                    <label for="message">Message</label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <button class="btn btn-primary py-3 px-5" type="submit">Send Message</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
-    </footer>
+    </div>
+    <!-- Contact End -->
 
-    <script>
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
 
-        // Intersection Observer for fade-in animations
-        document.addEventListener('DOMContentLoaded', () => {
-            const sections = document.querySelectorAll('.fade-in');
+    <!-- Map Start -->
+    <div class="container-xxl pt-5 px-0 wow fadeInUp" data-wow-delay="0.1s">
+        <div class="container-xxl pt-5 px-0">
+            <div class="bg-dark">
+                <!-- Updated map to reflect approximate location (West Bengal, India) -->
+                <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d118227.40939529323!2d87.75549090623348!3d22.420803454796333!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a0279f04523bb81%3A0xc3f1737e8c37492c!2sBagnan%2C%20West%20Bengal!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+                frameborder="0" style="width: 100%; height: 450px; border:0;" allowfullscreen="" aria-hidden="false"
+                tabindex="0"></iframe>
+            </div>
+        </div>
+    </div>
+    <!-- Map End -->
 
-            const observerOptions = {
-                root: null,
-                rootMargin: '0px',
-                threshold: 0.1 // When 10% of the section is visible
-            };
 
-            const observer = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('appear');
-                        observer.unobserve(entry.target); // Stop observing once it's visible
-                    }
-                });
-            }, observerOptions);
+    <!-- Copyright Start -->
+    <div class="container-fluid bg-dark text-white py-4">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                        &copy; <a class="border-bottom footer-name-gold" href="#">Arkadyuti Mandal</a>, All Right Reserved.
+                    </div>
+                    <div class="col-md-6 text-center text-md-end">
+    Designed By <a class="border-bottom text-secondary" href="https://github.com/Aquaa19/Aquaa19" style="color:#16d7df !important;">Arkadyuti Mandal</a>
+</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Copyright End -->
 
-            sections.forEach(section => {
-                observer.observe(section);
-            });
-        });
-    </script>
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/typed/typed.min.js"></script>
+    <script src="lib/counterup/counterup.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/isotope/isotope.pkgd.min.js"></script>
+    <script src="lib/lightbox/js/lightbox.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
 </body>
+
 </html>
