@@ -1,0 +1,319 @@
+<!-- index.html -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Arkadyuti Mandal — Portfolio</title>
+
+  <!-- Open Sans (Google Fonts) -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Core CSS -->
+  <link rel="stylesheet" href="css/glass.css">
+  <link rel="stylesheet" href="css/style.css">
+
+  <meta name="color-scheme" content="dark">
+</head>
+<body class="site-root" data-bg="img/center.png">
+  <div class="center-decor" aria-hidden="true"></div>
+
+  <div class="glass-lens" aria-hidden="true"></div>
+
+  <header class="nav-glass" role="banner">
+    <nav class="nav-inner">
+      <ul class="nav-left">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+      </ul>
+
+      <div class="brand" aria-label="brand">Arkadyuti Mandal</div>
+
+      <ul class="nav-right">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="main-content" id="home" role="main">
+
+    <!-- Hero Section -->
+    <section class="card hero-card" id="hero" aria-labelledby="hero-title">
+      <div class="hero-grid">
+        <div class="hero-text">
+          <h1 id="hero-title">Hi — I’m Arkadyuti Mandal</h1>
+          <p class="hero-sub">I build mobile apps, tools and playful interfaces.</p>
+
+          <!-- Visible typed roles (output target for js/main.js typewriter) -->
+          <div class="typed-wrap" aria-live="polite">
+            <span id="typed-roles" class="typed-roles"></span>
+          </div>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="/ARKADYUTI_MANDAL_CV.pdf" download="ARKADYUTI_MANDAL_CV.pdf">Download CV</a>
+            <a class="btn btn-ghost" href="#projects">See projects</a>
+          </div>
+        </div>
+
+        <div class="hero-image">
+          <img src="img/arkadyuti_profile.jpg" alt="Arkadyuti Mandal — profile" class="profile-photo">
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="card about-card" aria-labelledby="about-title">
+      <h2 id="about-title">Personal summary</h2>
+      <div class="about-grid">
+        <div class="about-text">
+          <p class="lead">1.5+ years of working experience in software &amp; app design</p>
+
+          <p>
+            A highly driven Computer Science undergraduate, dual majoring in Mathematics, currently in Semester 2, with a strong focus on mobile development, Python programming and building secure, efficient UI/UX design. Dedicated to architect leveraging advanced mathematical concepts and robust coding practices for impactful roles in public sector R&amp;D, space, and defense organizations such as DRDO and ISRO. Actively pursuing freelance opportunities in software and app development, and passionate about creating engaging game experiences, with current focus on learning Firebase integrations for scalable backend solutions.
+          </p>
+
+          <p>Proven ability to architect and build secure, efficient, and scalable software solutions.</p>
+          <p>Dedicated to leveraging advanced mathematical concepts and robust coding practices.</p>
+          <p>Passionate about creating engaging game experiences.</p>
+
+          <ul class="about-highlights">
+            <li>Projects Completed: <strong>6</strong></li>
+            <li>My projects demonstrate a commitment to integrating complex academic algorithms into practical, user-centric software solutions.</li>
+            <li>Currently in Semester 2</li>
+          </ul>
+        </div>
+
+        <div class="about-images">
+          <img src="img/about_image_1.jpg" alt="about image 1" class="about-thumb">
+          <img src="img/about_image_2.jpeg" alt="about image 2" class="about-thumb">
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills & Experience -->
+    <section id="skills" class="card skills-card" aria-labelledby="skills-title">
+      <h2 id="skills-title">Skills &amp; Experience</h2>
+      <div class="skills-grid">
+        <div class="skills-list">
+          <div class="skill" data-percent="90">
+            <div class="skill-head"><span>App Development (Jetpack Compose, Android Studio)</span><span class="skill-percent">90%</span></div>
+            <div class="skill-bar"><div class="skill-fill" style="width:90%"></div></div>
+          </div>
+
+          <div class="skill" data-percent="95">
+            <div class="skill-head"><span>Software Design &amp; UI/UX</span><span class="skill-percent">95%</span></div>
+            <div class="skill-bar"><div class="skill-fill" style="width:95%"></div></div>
+          </div>
+
+          <div class="skill" data-percent="85">
+            <div class="skill-head"><span>Programming Languages (Python, Java, Kotlin, C++)</span><span class="skill-percent">85%</span></div>
+            <div class="skill-bar"><div class="skill-fill" style="width:85%"></div></div>
+          </div>
+
+          <div class="skill" data-percent="75">
+            <div class="skill-head"><span>Data &amp; Analytics (NumPy, Pandas, Matplotlib)</span><span class="skill-percent">75%</span></div>
+            <div class="skill-bar"><div class="skill-fill" style="width:75%"></div></div>
+          </div>
+
+          <div class="skill" data-percent="80">
+            <div class="skill-head"><span>Databases (Kotlin Room, SQL Local Database)</span><span class="skill-percent">80%</span></div>
+            <div class="skill-bar"><div class="skill-fill" style="width:80%"></div></div>
+          </div>
+
+          <div class="skill" data-percent="80">
+            <div class="skill-head"><span>Game Development (AI Algorithms)</span><span class="skill-percent">80%</span></div>
+            <div class="skill-bar"><div class="skill-fill" style="width:80%"></div></div>
+          </div>
+        </div>
+
+        <div class="experience-tabs">
+          <div class="tabs">
+            <button class="tab active" data-tab="exp">Experience</button>
+            <button class="tab" data-tab="edu">Education</button>
+          </div>
+
+          <div class="tab-panels">
+            <div class="panel" id="exp">
+              <h3>Software Developer / Freelance Projects</h3>
+              <p><small>Jan 2024 - Present</small></p>
+              <p>
+                Developed comprehensive mobile applications and standalone software tools. Emphasized robust local data storage and user-centric UI/UX design throughout the development lifecycle, including secure authentication mechanisms and the creation of modular, component-based user interfaces. Delivered efficient and reliable software solutions for diverse client needs, with ongoing learning in cloud synchronization techniques.
+              </p>
+            </div>
+
+            <div class="panel" id="edu" hidden>
+              <h3>Currently Learning</h3>
+              <ul>
+                <li>Firebase Integrations</li>
+                <li>MongoDB</li>
+                <li>RESTful APIs</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services -->
+    <!-- Services -->
+<section id="services" class="card services-card" aria-labelledby="services-title">
+  <div class="services-header">
+    <h2 id="services-title">My Services</h2>
+    <div class="services-header-cta">
+      <a class="btn btn-primary" href="#contact">Hire Me</a>
+    </div>
+  </div>
+  <div class="services-grid">
+    <article class="service-subcard">
+      <div class="service-icon" aria-hidden="true">📱</div>
+      <h3>Mobile App Development</h3>
+      <p>Android &amp; Cross-Platform Solutions — crafting intuitive and high-performance mobile applications using modern frameworks like Jetpack Compose and integrating robust backend services.</p>
+
+        </article>
+
+        <article class="service-subcard">
+          <div class="service-icon" aria-hidden="true">🎨</div>
+          <h3>UI/UX Design</h3>
+          <p>User-Centric Interface Solutions — designing visually appealing and highly intuitive user interfaces that enhance user experience and engagement.</p>
+        </article>
+
+        <article class="service-subcard">
+          <div class="service-icon" aria-hidden="true">🐍</div>
+          <h3>Python Programming</h3>
+          <p>Backend, Data Analysis &amp; Automation — developing efficient Python-based solutions for complex mathematical computations, data processing, and automation scripts.</p>
+        </article>
+
+        <article class="service-subcard">
+          <div class="service-icon" aria-hidden="true">🎮</div>
+          <h3>Game Development</h3>
+          <p>AI &amp; Game Logic Implementation — implementing intelligent game opponents and complex game logic to create engaging and challenging interactive experiences.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" class="card projects-card" aria-labelledby="projects-title">
+      <h2 id="projects-title">My Projects</h2>
+      <div class="kicker">All Projects · App Development · Mathematical Engines · Game Development</div>
+
+      <div class="projects-grid" style="margin-top:16px;">
+        <article class="project-card">
+          <img src="img/scholarsync.png" alt="ScholarSync - Android Academic Manager">
+          <h4>ScholarSync — Android Academic Manager (Ongoing Project)</h4>
+          <p>Comprehensive student data management application built with Jetpack Compose, Java, and Kotlin, emphasizing local data storage and future cloud integration.</p>
+          <a class="project-link" href="#" target="_blank" rel="noopener">GitHub</a>
+        </article>
+
+        <article class="project-card">
+          <img src="img/alphamath.png" alt="Alphamath - Mathematical Engine">
+          <h4>Alphamath — Mathematical Engine (Python)</h4>
+          <p>Sophisticated Python-based software for algebraic problems, symbolic logic, and matrix operations.</p>
+          <a class="project-link" href="#" target="_blank" rel="noopener">GitHub</a>
+        </article>
+
+        <article class="project-card">
+          <img src="img/markly.png" alt="Markly - Attendance App with Analytics">
+          <h4>Markly — Attendance App with Analytics (Java)</h4>
+          <p>Attendance tracking application utilizing Java, Room entity, and DAO for robust data management and plotting, focusing on local database solutions.</p>
+          <a class="project-link" href="#" target="_blank" rel="noopener">GitHub</a>
+        </article>
+
+        <article class="project-card">
+          <img src="img/edupay.png" alt="EduPay - Semester-Wise Fee Tracker">
+          <h4>EduPay — Semester-Wise Fee Tracker (Android)</h4>
+          <p>Developed in Jetpack Compose, leveraging Room DB for robust offline support in tracking fees semester-wise.</p>
+          <a class="project-link" href="#" target="_blank" rel="noopener">GitHub</a>
+        </article>
+
+        <article class="project-card">
+          <img src="img/matrix_calculator.png" alt="Matrix Calculator - Algebra App">
+          <h4>Matrix Calculator — Algebra App (Android - Kotlin)</h4>
+          <p>Android application automating complex matrix operations with meticulously designed UI, purely developed in Kotlin and Jetpack Compose.</p>
+          <a class="project-link" href="#" target="_blank" rel="noopener">GitHub</a>
+        </article>
+
+        <article class="project-card">
+          <img src="img/ai_tictactoe.png" alt="AI Tic-Tac-Toe">
+          <h4>AI Tic-Tac-Toe — Game Development Project</h4>
+          <p>Implemented an intelligent game opponent using advanced algorithms: Minimax and Alpha-Beta pruning.</p>
+          <a class="project-link" href="#" target="_blank" rel="noopener">GitHub</a>
+        </article>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="card contact-card" aria-labelledby="contact-title">
+      <h2 id="contact-title">Let’s Work Together</h2>
+      <div class="contact-grid">
+        <div class="contact-left">
+          <address>
+            <p><strong>My Location:</strong> Bagnan, West Bengal, India</p>
+            <p><strong>Call me:</strong> <a href="tel:+918100516695">+91 8100516695</a></p>
+            <p><strong>Mail:</strong> <a href="mailto:arkamandal1919@gmail.com">arkamandal1919@gmail.com</a></p>
+          </address>
+
+          <div style="margin-top:12px;">
+            <p>Feel free to reach out for collaborations, project discussions, or any inquiries. I am always open to new opportunities.</p>
+            <div class="socials" style="margin-top:8px;">
+              <a href="#" aria-label="GitHub">GitHub</a> ·
+              <a href="#" aria-label="LinkedIn">LinkedIn</a> ·
+              <a href="#" aria-label="Twitter">Twitter</a>
+            </div>
+          </div>
+        </div>
+
+        <form class="contact-form" action="#" method="post" novalidate>
+          <label>
+            <span class="sr-only">Your Name</span>
+            <input type="text" name="name" placeholder="Your Name" required>
+          </label>
+
+          <label>
+            <span class="sr-only">Your Email</span>
+            <input type="email" name="email" placeholder="Your Email" required>
+          </label>
+
+          <label>
+            <span class="sr-only">Subject</span>
+            <input type="text" name="subject" placeholder="Subject">
+          </label>
+
+          <label>
+            <span class="sr-only">Message</span>
+            <textarea name="message" rows="5" placeholder="Message" required></textarea>
+          </label>
+
+          <button type="submit" class="btn btn-primary">Send Message</button>
+          <div style="margin-top:12px;"><a class="btn btn-ghost" href="mailto:arkamandal1919@gmail.com">Say Hello</a></div>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer-glass" role="contentinfo">
+    <div class="footer-inner">
+      <small>© <span id="year"></span> Arkadyuti Mandal — All rights reserved.</small>
+      <small>Designed &amp; built by Arkadyuti.</small>
+    </div>
+  </footer>
+<!-- hidden typed strings (read by js/main.js) -->
+<div class="typed-text" style="display:none;" aria-hidden="true">
+  Mobile App Developer, Python Programmer, UI/UX Designer, Game Developer, Freelancer, Researcher
+</div>
+
+  <script src="js/main.js" defer></script>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    (function(){
+      var bg = document.body.getAttribute('data-bg') || 'C:\Users\aquaa\OneDrive\Documents\Site_WEB\img\center.png';
+      document.documentElement.style.setProperty('--site-bg', "url('" + bg + "')");
+    })();
+  </script>
+</body>
+</html>

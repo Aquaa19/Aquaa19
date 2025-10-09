@@ -1,0 +1,206 @@
+/* css/style.css */
+/* Layout, spacing, typography, and responsive tweaks for Arkadyuti's portfolio */
+
+/* Typography */
+h1, h2, h3, h4 { margin: 0 0 10px 0; line-height: 1.05; }
+h1 { font-size: clamp(1.8rem, 3.6vw, 2.6rem); font-weight:700; color:var(--text) }
+h2 { font-size: 1.25rem; font-weight:700; color:var(--text) }
+h3 { font-size: 1rem; font-weight:600; color:var(--text) }
+p { margin: 0 0 12px 0; color: var(--muted); line-height:1.5; }
+
+/* Core card layout */
+.card { display:block; isolation:isolate; }
+
+/* Hero layout specifics */
+.hero-grid { align-items: center; gap: 22px; }
+.hero-text { max-width: 640px; }
+.hero-sub { color: var(--muted); margin-bottom: 10px; font-weight:600 }
+.typed-wrap { margin: 14px 0 18px 0; font-weight:700; color:var(--accent); font-size:1.05rem; min-height:1.35em }
+
+/* Buttons spacing */
+.hero-actions { display:flex; gap:12px; margin-top: 8px; align-items:center }
+.btn { cursor:pointer; }
+
+/* About */
+.about-grid { align-items:start }
+.about-text .lead { color: var(--text); font-weight:600; margin-bottom:12px }
+.about-highlights { list-style: none; padding:0; margin:0; display:grid; gap:8px }
+.about-highlights li { color:var(--muted) }
+
+/* Skills & Experience */
+.skills-grid { gap: 20px; align-items:start }
+.skills-list { padding-right:6px; }
+.experience-tabs { background: transparent; padding: 6px; border-radius:12px; }
+.tabs { display:flex; gap:8px; margin-bottom:12px; }
+.tab { background: transparent; border:1px solid rgba(255,255,255,0.03); padding:8px 12px; border-radius:10px; color:var(--muted); cursor:pointer; font-weight:600 }
+.tab.active { background: linear-gradient(90deg, rgba(65,190,225,0.12), rgba(65,190,225,0.06)); color:var(--accent); border-color: rgba(65,190,225,0.16) }
+
+/* Projects grid responsiveness */
+@media (min-width: 1280px){
+  .projects-grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media (min-width: 900px) and (max-width:1279px){
+  .projects-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width:899px){
+  .projects-grid { grid-template-columns: 1fr; }
+  .services-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* Service subcards: icons & text */
+.service-subcard h3 { margin-top:6px; margin-bottom:6px; color:var(--text) }
+.service-subcard p { color:var(--muted); font-size:.95rem }
+
+/* Project card details */
+.project-card h4 { font-size:1rem; color:var(--text) }
+.project-card p { font-size:.92rem; color:var(--muted) }
+.project-link { font-weight:700; text-decoration:none; color:var(--accent); font-size:.92rem }
+
+/* Contact layout */
+.contact-grid { gap:20px }
+.contact-left address { color:var(--muted) }
+.socials a { color:var(--accent); text-decoration:none; font-weight:700; margin-right:8px }
+
+/* Footer inner layout */
+.footer-inner { display:flex; justify-content:space-between; gap:12px; align-items:center; flex-wrap:wrap }
+.footer-inner small { color:var(--muted) }
+
+/* Small utilities */
+.center { text-align:center }
+.kicker { text-transform:uppercase; letter-spacing:1px; font-size:.75rem; color:var(--muted); font-weight:700 }
+
+/* Make sure cards never touch screen edges (global safe margin) */
+@media (min-width:901px) {
+  .card { margin-left: 28px; margin-right: 28px; }
+}
+@media (max-width:900px) {
+  .card { margin-left: 14px; margin-right: 14px; }
+}
+
+/* Nav link active anchor indicator (smooth scroll highlight) */
+.nav-inner a.active { color: var(--accent); position:relative; }
+.nav-inner a.active::after { content:""; position:absolute; left:50%; transform:translateX(-50%); bottom:-8px; width:6px; height:6px; border-radius:50%; background:var(--accent) }
+
+/* Small accessibility improvements */
+a:focus, button:focus, input:focus, textarea:focus { outline: 3px solid rgba(65,190,225,0.12); outline-offset:2px }
+
+/* === Animated skill bars === */
+.skill-bar {
+  position: relative;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.skill-fill {
+  width: 0;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, rgba(65,190,225,0.9), rgba(65,190,225,0.5));
+  transition: width 1.6s cubic-bezier(.2,.9,.25,1);
+}
+
+.skills-card.revealed .skill-fill {
+  width: var(--target-width, 0%);
+}
+
+/* Optional glowing pulse effect */
+.skills-card.revealed .skill-fill::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0) 100%);
+  animation: shimmer 2.5s infinite linear;
+}
+
+@keyframes shimmer {
+  from { transform: translateX(-100%); }
+  to   { transform: translateX(100%); }
+}
+
+/* === Fade / slide-in animation for sections === */
+.card {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.card.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Add slight stagger for smoother reveal */
+.card:nth-of-type(odd).in-view { transition-delay: 0.1s; }
+.card:nth-of-type(even).in-view { transition-delay: 0.2s; }
+
+/* Small-screen tweaks */
+@media (max-width:480px){
+  .profile-photo{ width:180px; height:180px }
+  .hero-text { padding-right:0 }
+  .brand { font-size:0.95rem }
+  .nav-inner a { font-size:0.9rem }
+}
+
+/* Ensure images aren't too heavy visually */
+img { display:block; max-width:100%; height:auto }
+
+/* Darken overlay optional helper (if content needs extra contrast) */
+.overlay-contrast {
+  background: linear-gradient(180deg, rgba(0,0,0,0.25), rgba(0,0,0,0.35));
+  border-radius: inherit;
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+/* ---------- additions for experience-large & services header ---------- */
+.experience-indicator {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+.exp-number {
+  font-size: clamp(3.2rem, 8vw, 6rem);
+  font-weight: 800;
+  line-height: 0.9;
+  color: var(--text);
+  letter-spacing: -2px;
+}
+.exp-plus {
+  font-size: clamp(1.2rem, 2.4vw, 1.8rem);
+  font-weight:700;
+  color: var(--text);
+  margin-top: 10px;
+}
+.exp-years {
+  font-size: 0.95rem;
+  color: var(--muted);
+  margin-left: 6px;
+  align-self: flex-end;
+}
+
+/* Services header with inline CTA */
+.services-header {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  padding-bottom: 6px;
+}
+.services-header h2 { margin:0; }
+.services-header-cta { margin-left:auto; }
+.services-header-cta .btn { padding:8px 12px; font-size:0.95rem; }
+
+/* Make sure it wraps nicely on smaller screens */
+@media (max-width:900px) {
+  .experience-indicator { justify-content:flex-start; }
+  .exp-number { font-size: clamp(2.2rem, 10vw, 4rem); }
+  .services-header { flex-direction:column; align-items:flex-start; gap:8px; }
+  .services-header-cta { align-self: stretch; }
+  .services-header-cta .btn { width:100%; text-align:center; }
+}
+
+/* End of css/style.css */
